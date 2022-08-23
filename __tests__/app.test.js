@@ -11,11 +11,11 @@ const mockUser = {
 };
 
 const registerAndLogin = async (userProps = {}) => {
-  const password = userProps.password ?? mockUser.password;
+  userProps.password ?? mockUser.password;
   const agent = request.agent(app);
   const resp = await agent
-  .post('/api/v1/users')
-  .send({ ...mockUser, ...userProps });
+    .post('/api/v1/users')
+    .send({ ...mockUser, ...userProps });
   const user = resp.body;
   return [agent, user];
 };
