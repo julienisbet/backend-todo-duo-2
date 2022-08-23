@@ -23,12 +23,11 @@ describe('backend-express-template routes', () => {
     const { firstName, lastName, email } = mockUser;
 
     expect(res.body).toEqual({
-      Message: 'Hiya Cinderellie!',
 
-      user: { id: expect.any(String),
-        firstName,
-        lastName,
-        email, }
+      id: expect.any(String),
+      firstName,
+      lastName,
+      email,
     });
   });
 
