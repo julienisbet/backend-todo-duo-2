@@ -8,8 +8,9 @@ const mockUser = {
   lastName: 'Tremaine',
   email: 'ilostmyshoe@cinder.com',
   password: 'gussguss'
-
 };
+
+
 
 describe('backend-express-template routes', () => {
   beforeEach(() => {
@@ -29,6 +30,14 @@ describe('backend-express-template routes', () => {
       lastName,
       email,
     });
+  });
+
+  it('signs in an existing user, creates a cookie and redirects to list of tasks', async () => {
+    await request(app).post('/api/v1/users').send(mockUser);
+    const res = await request(app).post('/api/v1/users/sessions')
+      .send({ email: 'ilostmyshoe@cinder.com', password: 'gussguss' });
+    expect(res.status).toBe(200);
+
   });
 
 
