@@ -10,7 +10,15 @@ const mockUser = {
   password: 'gussguss'
 };
 
-
+const registerAndLogin = async (userProps = {}) => {
+  userProps.password ?? mockUser.password;
+  const agent = request.agent(app);
+  const resp = await agent
+    .post('/api/v1/users')
+    .send({ ...mockUser, ...userProps });
+  const user = resp.body;
+  return [agent, user];
+};
 
 describe('backend-express-template routes', () => {
   beforeEach(() => {
@@ -37,10 +45,18 @@ describe('backend-express-template routes', () => {
     const res = await request(app).post('/api/v1/users/sessions')
       .send({ email: 'ilostmyshoe@cinder.com', password: 'gussguss' });
     expect(res.status).toBe(200);
-
   });
 
-
+  it('POST /api/v1/users/me returns the authenticated user, Users should be redirected to list of tasks if already authenticated', async () => {
+    const [agent, user] = await registerAndLogin();
+    const resp = await agent.get('/api/v1/users/me');
+    expect(resp.status).toBe(200);
+    expect(resp.body).toEqual({
+      ...user,
+      exp: expect.any(Number),
+      iat: expect.any(Number),
+    });
+  });
 
 
 
