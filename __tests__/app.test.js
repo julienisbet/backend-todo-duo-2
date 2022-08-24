@@ -72,7 +72,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(200);
   });
 
-
+  it ('PUT updates list of todos to completed', async () => {
+    const res = await request(app).put('/api/v1/todos/3').send({
+      complete: 'true',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.status).toBe('true');
+  });
 
 
 
