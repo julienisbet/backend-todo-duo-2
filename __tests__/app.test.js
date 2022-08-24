@@ -58,6 +58,14 @@ describe('backend-express-template routes', () => {
     });
   });
 
+  it('deletes session', async () => {
+    const [agent] = await registerAndLogin();
+    const deleteResp = await agent.delete('/api/v1/users/sessions');
+    expect(deleteResp.status).toBe(204);
+    const res = await agent.get('/api/v1/users/me');
+    expect(res.status).toBe(401);
+  });
+
 
 
 
