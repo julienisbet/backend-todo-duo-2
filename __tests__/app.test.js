@@ -66,6 +66,12 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(401);
   });
 
+  it ('List of tasks calls GET /api/v1/todos/ and lists all todos for the authenticated user', async () => {
+    const [agent] = await registerAndLogin();
+    const res = await agent.get('api/v1/todos');
+    expect(res.staus).toBe(200);
+  });
+
 
 
 
