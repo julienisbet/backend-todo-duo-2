@@ -91,6 +91,7 @@ describe('backend-express-template routes', () => {
     const res = await agent.post('/api/v1/todos').send(newChore);
     expect(res.body).toEqual({
       id: expect.any(String),
+      user_id: expect.any(String),
       ...newChore,
     });
   });
