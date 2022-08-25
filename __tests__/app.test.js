@@ -82,13 +82,13 @@ describe('backend-express-template routes', () => {
   });
 
   it('#POST should create a new chore in form', async () => {
+    const [agent] = await registerAndLogin();
     const newChore = {
       'chore': 'mow',
       'room': 'front yard',
-      'complete': 'false',
+      'complete': false,
     };
-    const res = await request(app).post('/api/v1/todos').send(newChore);
-    // expect(res.status).toBe(200);
+    const res = await agent.post('/api/v1/todos').send(newChore);
     expect(res.body).toEqual({
       id: expect.any(String),
       ...newChore,
