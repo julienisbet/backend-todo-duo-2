@@ -77,9 +77,22 @@ describe('backend-express-template routes', () => {
     const res = await agent.put('/api/v1/todos/3').send({
       complete: true,
     });
-    console.log(res.body);
     expect(res.status).toBe(200);
     expect(res.body.complete).toBe(true);
+  });
+
+  it('#POST should create a new chore in form', async () => {
+    const newChore = {
+      'chore': 'mow',
+      'room': 'front yard',
+      'complete': 'false',
+    };
+    const res = await request(app).post('/api/v1/todos').send(newChore);
+    // expect(res.status).toBe(200);
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      ...newChore,
+    });
   });
 
 
