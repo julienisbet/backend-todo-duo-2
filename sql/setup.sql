@@ -28,13 +28,13 @@ INSERT into users (first_name, last_name, email, password_hash) values
 ('Moana', 'Waialiki', 'runaway@dwayne.com', 'heihei');
 
 INSERT into todos (user_id, room, chore, complete) values
-('2', 'kitchen', ' scrubfloors', 'false'),
-('3', 'kitchen', 'dishes', 'false'),
-('1', 'laundry', ' wash clothes', 'false'),
-('4', 'bedrooms', 'make beds', 'false'),
-('3', 'dining', 'windows', 'false'),
-('2', 'dining', 'set the table', 'false'),
-('1', 'bathroom', 'bath pets', 'false'),
-('1', 'kitchen', 'feed pets', 'false'),
-('4', 'bathroom', 'mirrors', 'false'),
-('4', 'kitchen', 'garbage', 'false')
+('2', 'kitchen', ' scrubfloors', false),
+('3', 'kitchen', 'dishes', false),
+('1', 'laundry', ' wash clothes', false),
+('4', 'bedrooms', 'make beds', false),
+('3', 'dining', 'windows', false),
+('2', 'dining', 'set the table', false),
+('1', 'bathroom', 'bath pets', false),
+('1', 'kitchen', 'feed pets', false),
+('4', 'bathroom', 'mirrors', false),
+('4', 'kitchen', 'garbage', false)
