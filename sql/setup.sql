@@ -16,7 +16,7 @@ CREATE TABLE todos (
     user_id BIGINT,
     room TEXT,
     chore TEXT,
-    complete BOOLEAN,
+    complete BOOLEAN DEFAULT false,
     foreign key (user_id) references users(id)
 
 );
